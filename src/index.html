@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link rel="stylesheet" href="../dist/output.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        .canvas, .bot{
+            width: 500px;
+            height: 500px;
+            margin: 1rem;
+            border: 2px solid gray;
+            background-color: aliceblue;
+        }
+
+        .timer{
+            text-align: center;
+            background-color: rgb(70 70 70);
+            margin: 0 14em 1em 14em ;
+            padding: 0.4em 1em;
+            border: 2px solid #111; 
+            font-size: 2em;
+            color: rgb(233 231 222);
+        }
+
+        .win-screen {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgb(234 225 211);
+            padding: 2rem;
+            border: 1px solid #111;
+            text-align: center;
+        }
+
+        .restart-button{
+            background-color: rgb(70 70 70);
+            color: rgb(233 231 222);
+            padding: 0.5rem;
+            border-radius: 10%;
+        }
+
+    </style>
+</head>
+<body class="flex-col h-screen bg-background">
+    <header class="bg-secondary p-4">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center">
+                <div class="text-accent font-bold text-4xl title">Game</div>
+            </div>
+            <div class="flex justify-end text-xl space-x-2 items-center">
+                <label for="shapes_button" class="text-text-alt py-1">Shapes</label>
+                <button class="text-white text-2xl" id="shapes_button">▾</button>
+                <div id="shapes_picker" class="hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-secondary text-6xl text-text-alt space-x-2 space-y-1 p-3">
+                    <button id="square_choice">&#x25A0;</button>
+                    <button id="triangle_choice">&#x25B2;</button>
+                    <button id="circle_choice">&#x25CF;</button>
+                    <button id="line_choice">&#x2571;</button>
+                    <button id="freeform_choice">&#8967;</button>
+                </div>
+
+                <label for="color_picker" class="text-text-alt py1">Color</label>
+                <input type="color" id="color_picker" value="#ff0000">
+
+                <button class="text-text-alt px-2 py-1">Scores</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="w-full flex justify-center">
+        <div class="canvas">
+            <canvas id="draw-canvas" width="500" height="500"></canvas>
+        </div>
+        <div class="bot">
+             <canvas id="pc-canvas" width="500" height="500"></canvas>
+        </div>
+    </div>
+
+    <div class="flex-col" id="timer_and_reset">
+        <div class="timer" id="timer">01:00</div>
+    </div>
+
+    <div id="win-screen" class="win-screen">
+        <p>Time's Up!</p>
+        <p id="score-text">Score: 0</p>
+        <button id="restart-button" class="restart-button">Try Again</button>
+    </div>
+
+   
+    <script src="./js/main.js"></script>
+</body>
+</html>
